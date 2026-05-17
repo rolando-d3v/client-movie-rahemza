@@ -1,0 +1,4 @@
+.div_resultados {
+    overflow-y: auto;
+    height: calc(100dvh - 60px);
+}

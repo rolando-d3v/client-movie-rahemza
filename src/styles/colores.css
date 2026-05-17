@@ -1,0 +1,273 @@
+/*
+ * ============================================================
+ *  LMS DESIGN SYSTEM — LIGHT / DARK TOKENS
+ *  Sintaxis: light-dark(valor_claro, valor_oscuro)
+ *
+ *  Escalas de referencia (inmutables, sin modo):
+ *    Púrpura  : 50 → 900
+ *    Teal     : 50 → 800
+ *    Naranja  : 50 → 700
+ *    Semánticos: éxito / error / advertencia / info
+ * ============================================================
+ */
+
+/* ── Activar soporte nativo de color-scheme ── */
+html {
+  color-scheme: light dark;
+}
+
+/* ── Overrides manuales por atributo ── */
+[data-theme="light"] { color-scheme: light; }
+[data-theme="dark"]  { color-scheme: dark;  }
+
+
+:root {
+
+  /* ============================================================
+   *  ESCALAS DE PALETA — Sin modo (valores fijos)
+   *  Úsalas para construir componentes o sobreescribir tokens.
+   * ============================================================ */
+
+  /* Púrpura */
+  --purple-50:  #f1effe;
+  --purple-100: #e0d9fd;
+  --purple-200: #cdc1ff;
+  --purple-300: #b3a3fb;
+  --purple-400: #a294f9;
+  --purple-500: #7b61ff;
+  --purple-600: #6e54b5;
+  --purple-700: #4f3b8c;
+  --purple-800: #32245e;
+  --purple-900: #1e153a;
+
+  /* Teal */
+  --teal-50:  #e6faf7;
+  --teal-100: #b3ece4;
+  --teal-300: #5dcebb;
+  --teal-500: #0ab39c;
+  --teal-600: #088a78;
+  --teal-800: #065f54;
+
+  /* Naranja */
+  --orange-50:  #fff3e8;
+  --orange-100: #fdd3b2;
+  --orange-300: #f9a76a;
+  --orange-500: #f47c3c;
+  --orange-700: #c5581d;
+
+/* #1F1F1F */
+/* #1F1F1F */
+  /* ============================================================
+   *  1. FONDOS Y SUPERFICIES
+   *
+   *  Lógica dark:
+   *    app       → #11111e  (base más oscura, tinte púrpura)
+   *    card      → #1a1a2e  (una capa arriba del app)
+   *    elevado   → #22223a  (modales/dropdowns, más arriba)
+   *    input     → #252540  (levemente más claro que card)
+   *    sidebar   → #0d0d1a  (más oscuro que app, anclado)
+   *    activo    → rgba púrpura translúcido
+   * ============================================================ */
+
+  --color-body-app:             light-dark(#7b61ff,          #73579e);
+  --color-border-app:           light-dark(#11111e,          #3c3c3e);
+  --color-fondo-app:            light-dark(#f9f9fb,          #1F1F1F);
+  --color-fondo-sidebar:        light-dark(#1a1a2e,          #0d0d0d);
+  --color-fondo-sidebar-activo: light-dark(#252543,          #1a1a2e);
+  
+
+  /* color para lista de opciones */
+  --color-fondo-opcion-hover:   light-dark(#ababe9,          #1a1a2e);
+  --color-texto-opcion-hover:   light-dark(#1c1c2e,          #f0eeff);
+
+
+  /* color para tarjetas */
+  --color-fondo-card:           light-dark(#ffffff,          #2C2C2C);
+
+
+
+
+  --color-fondo-elevado:        light-dark(#ffffff,          #22223a);
+  --color-fondo-input:          light-dark(#f4f4f8,          #252540);
+  --color-fondo-overlay:        light-dark(rgba(26,26,46,.55), rgba(0,0,0,.72));
+  --color-fondo-activo:         light-dark(#f1effe,          rgba(123,97,255,.15));
+  --color-fondo-hover:          light-dark(#f4f3ff,          rgba(123,97,255,.10));
+  --color-fondo-skeleton:       light-dark(#ededf5,          #252540);
+
+
+  /* ============================================================
+   *  2. TEXTOS Y TIPOGRAFÍA
+   *
+   *  Lógica dark:
+   *    heading   → #f0eeff  (blanco con tinte púrpura frío)
+   *    body      → #ccc8ef  (cálido, no puro blanco)
+   *    secundario→ #8888aa  (muted, mismo en ambos modos)
+   *    placeholder→ #55556a (suficiente contraste en oscuro)
+   *    disabled  → #44445a
+   * ============================================================ */
+
+  --color-texto-heading:        light-dark(#1c1c2e,   #f0eeff);
+  --color-texto-body:           light-dark(#333355,   #ccc8ef);
+  --color-texto-secundario:     light-dark(#6b6b8a,   #8888aa);
+  --color-texto-placeholder:    light-dark(#a0a0bf,   #55556a);
+  --color-texto-sidebar:        light-dark(#f0eeff,   #d4cfff);
+  --color-texto-sidebar-muted:  light-dark(#8888aa,   #55556a);
+  --color-texto-disabled:       light-dark(#b0b0cc,   #44445a);
+  --color-texto-link:           light-dark(#7b61ff,   #a294f9);
+  --color-texto-link-hover:     light-dark(#6e54b5,   #cdc1ff);
+
+
+  /* ============================================================
+   *  3. COLOR PRIMARIO (Púrpura) — Interacción principal
+   *
+   *  Lógica dark:
+   *    base      → sube a 400 (#a294f9) — más legible en oscuro
+   *    hover     → 300 (#b3a3fb)
+   *    activo    → 500 (#7b61ff) — vuelve al base claro
+   *    suave     → rgba translúcido en lugar de sólido claro
+   * ============================================================ */
+
+  --color-primario:             light-dark(#7b61ff,   #a294f9);
+  --color-primario-hover:       light-dark(#6e54b5,   #b3a3fb);
+  --color-primario-activo:      light-dark(#4f3b8c,   #7b61ff);
+  --color-primario-suave:       light-dark(#e0d9fd,   rgba(123,97,255,.20));
+  --color-primario-muysuave:    light-dark(#f1effe,   rgba(123,97,255,.10));
+  --color-primario-texto:       light-dark(#4f3b8c,   #cdc1ff);
+
+
+  /* ============================================================
+   *  4. PROGRESO (Teal)
+   * ============================================================ */
+
+  --color-progreso:             light-dark(#0ab39c,   #5dcebb);
+  --color-progreso-hover:       light-dark(#088a78,   #0ab39c);
+  --color-progreso-suave:       light-dark(#e6faf7,   rgba(10,179,156,.15));
+
+
+  /* ============================================================
+   *  5. GAMIFICACIÓN (Naranja)
+   * ============================================================ */
+
+  --color-gamificacion:         light-dark(#f47c3c,   #f9a76a);
+  --color-gamificacion-suave:   light-dark(#fff3e8,   rgba(244,124,60,.15));
+
+
+  /* ============================================================
+   *  6. BORDES Y SOMBRAS
+   *
+   *  Lógica dark:
+   *    borde     → #2e2e4e  (visible sobre cards oscuras)
+   *    focus     → 400 → igual en ambos modos, muy visible
+   *    sombras   → negro con alpha en dark, púrpura en light
+   * ============================================================ */
+
+  --color-borde:                light-dark(#e0e0ec,   #424242);
+  --color-borde-suave:          light-dark(#ececf5,   #22223a);
+  --color-borde-focus:          light-dark(#a294f9,   #a294f9);
+  --color-borde-activo:         light-dark(#7b61ff,   #7b61ff);
+  --color-borde-error:          light-dark(#e84040,   #f07070);
+
+  --sombra-card:      light-dark(
+                        0 1px 4px rgba(26,26,46,.07), 0 4px 16px rgba(26,26,46,.06),
+                        0 2px 8px rgba(0,0,0,.30)
+                      );
+  --sombra-modal:     light-dark(
+                        0 8px 40px rgba(26,26,46,.18),
+                        0 8px 40px rgba(0,0,0,.50)
+                      );
+  --sombra-dropdown:  light-dark(
+                        0 4px 20px rgba(26,26,46,.12),
+                        0 4px 20px rgba(0,0,0,.40)
+                      );
+  --focus-ring:       light-dark(
+                        0 0 0 3px #cdc1ff,
+                        0 0 0 3px rgba(162,148,249,.40)
+                      );
+
+
+  /* ============================================================
+   *  7. ESTADOS SEMÁNTICOS
+   *
+   *  Lógica dark: el color base sube 1-2 pasos en luminosidad,
+   *  el fondo se reemplaza por rgba translúcido del mismo color,
+   *  el texto se aclara para contrastar con fondo oscuro.
+   * ============================================================ */
+
+  /* Éxito */
+  --color-exito:                light-dark(#1aad6b,   #34d399);
+  --color-exito-fondo:          light-dark(#edfbf3,   rgba(26,173,107,.15));
+  --color-exito-borde:          light-dark(#a3e6c3,   rgba(52,211,153,.30));
+  --color-exito-texto:          light-dark(#116940,   #6ee7b7);
+
+  /* Advertencia */
+  --color-advertencia:          light-dark(#f59e0b,   #fbbf24);
+  --color-advertencia-fondo:    light-dark(#fff4e5,   rgba(245,158,11,.15));
+  --color-advertencia-borde:    light-dark(#ffd48a,   rgba(251,191,36,.30));
+  --color-advertencia-texto:    light-dark(#8a5200,   #fde68a);
+
+  /* Error */
+  --color-error:                light-dark(#e84040,   #f87171);
+  --color-error-fondo:          light-dark(#fff1f0,   rgba(232,64,64,.15));
+  --color-error-borde:          light-dark(#ffb3af,   rgba(248,113,113,.30));
+  --color-error-texto:          light-dark(#8f1a1a,   #fca5a5);
+
+  /* Info */
+  --color-info:                 light-dark(#2d88ff,   #60a5fa);
+  --color-info-fondo:           light-dark(#e8f4ff,   rgba(45,136,255,.15));
+  --color-info-borde:           light-dark(#93cbfc,   rgba(96,165,250,.30));
+  --color-info-texto:           light-dark(#0a3a80,   #93c5fd);
+
+
+  /* ============================================================
+   *  8. INDICADORES FUNCIONALES
+   * ============================================================ */
+
+  --color-online:               light-dark(#1aad6b,   #34d399);
+  --color-ausente:              light-dark(#f59e0b,   #fbbf24);
+  --color-offline:              light-dark(#a0a0bf,   #55556a);
+  --color-badge:                light-dark(#7b61ff,   #a294f9);
+  --color-badge-texto:          light-dark(#ffffff,   #ffffff);
+
+  --color-barra-progreso:       light-dark(#0ab39c,   #5dcebb);
+  --color-barra-progreso-fondo: light-dark(#e6faf7,   rgba(10,179,156,.15));
+
+  --color-estrella:             light-dark(#f59e0b,   #fbbf24);
+
+  --color-tag-fondo:            light-dark(#ffffff,   #bebec3);
+  --color-tag-texto:            light-dark(#4000ff,   #000000);
+  --color-tag-borde:            light-dark(#cdc1ff,   rgba(255, 255, 255, 0.35));
+
+
+  /* ============================================================
+   *  9. INTERACCIÓN
+   * ============================================================ */
+
+  --color-hover-overlay:        light-dark(rgba(123,97,255,.06),  rgba(123,97,255,.12));
+  --color-pressed-overlay:      light-dark(rgba(123,97,255,.12),  rgba(123,97,255,.22));
+  --color-seleccion:            light-dark(#cdc1ff,               rgba(162,148,249,.35));
+
+  --color-disabled-fondo:       light-dark(#f0f0f5,   #1e1e30);
+  --color-disabled-texto:       light-dark(#b0b0cc,   #44445a);
+  --color-disabled-borde:       light-dark(#d8d8e8,   #2a2a42);
+
+
+  /* ============================================================
+   *  10. GAMIFICACIÓN — RANGOS
+   * ============================================================ */
+
+  --color-rango-bronce:         light-dark(#cd7f32,   #e09d58);
+  --color-rango-bronce-fondo:   light-dark(#fdf1e4,   rgba(205,127,50,.15));
+
+  --color-rango-plata:          light-dark(#a0aab4,   #c8d0d8);
+  --color-rango-plata-fondo:    light-dark(#f2f4f6,   rgba(160,170,180,.12));
+
+  --color-rango-oro:            light-dark(#f59e0b,   #fbbf24);
+  --color-rango-oro-fondo:      light-dark(#fff4e5,   rgba(245,158,11,.15));
+
+  --color-rango-diamante:       light-dark(#7b61ff,   #a294f9);
+  --color-rango-diamante-fondo: light-dark(#f1effe,   rgba(123,97,255,.15));
+
+  --color-xp:                   light-dark(#0ab39c,   #5dcebb);
+  --color-xp-fondo:             light-dark(#e6faf7,   rgba(10,179,156,.15));
+
+}

@@ -1,0 +1,83 @@
+@import "./colores.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+
+  @media (width < 768px) {
+    font-size: 15px;
+  }
+}
+
+/* theme light de sistema */
+:root {
+   --background-theme: #170e2f;
+    --background-linear-1: #000;
+    --background-linear-2: #02311d;
+
+    --base: #cfcfcf;
+    --base_text: #212121;
+
+    --text: #cfcfcf;
+  /* --background-theme: #ffffff;
+  --background-linear-1: #cff9eb;
+  --background-linear-2: #bde9f8;
+
+  --base: #212121;
+  --base_text: #ffffff;
+
+  --text: #212121;
+  --text-dark: #72767d; */
+}
+
+/* theme dark de sistema */
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background-theme: #170e2f;
+    --background-linear-1: #000;
+    --background-linear-2: #02311d;
+
+    --base: #cfcfcf;
+    --base_text: #212121;
+
+    --text: #cfcfcf;
+  }
+} */
+/* 
+html {
+  color-scheme: dark light;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --background-theme: #ffffff;
+  --background-linear-1: #cff9eb;
+  --background-linear-2: #bde9f8;
+
+  --base: #212121;
+  --base_text: #ffffff;
+
+  --text: #212121;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background-theme: #170e2f;
+  --background-linear-1: #000;
+  --background-linear-2: #063f23;
+
+  --base: #cfcfcf;
+  --base_text: #212121;
+
+  --text: #cfcfcf;
+} */
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}

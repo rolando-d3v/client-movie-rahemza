@@ -1,0 +1,224 @@
+.quizList {
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+  gap: 8px;
+  padding: 0 12px;
+  margin-top: 10px;
+}
+
+.headContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.6rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 10px;
+  background: #232324;
+  border: 1px solid #2e2e30;
+  gap: 0.75rem;
+
+  &:hover {
+    background: #2c2c2d;
+    border-color: #444;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+
+    .chevronIcon {
+      color: #8b5cf6;
+    }
+
+    .titulo_seccion {
+      color: #fff;
+      opacity: 1;
+    }
+
+    .headImg {
+      transform: scale(1.06);
+    }
+  }
+}
+
+/* Lado izquierdo: chevron + titulo */
+.headLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex: 1;
+  min-width: 0; /* permite truncado de texto */
+}
+
+.titulo_seccion {
+  font-size: 0.9rem;
+  color: #d1d5db;
+  margin: 0;
+  font-weight: 600;
+  transition: color 0.3s, opacity 0.3s;
+  line-height: 1.35;
+  opacity: 0.85;
+}
+
+.chevronIcon {
+  width: 0.85rem;
+  height: 0.85rem;
+  color: #7e7f82;
+  transition: color 0.3s;
+  flex-shrink: 0;
+}
+
+/* Imagen ilustrativa de la sección */
+.headImg {
+  width: 70px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  border-radius: 6px;
+}
+
+/* Estado activo (sección abierta) */
+.clickHead {
+  position: relative;
+  background: #2a2a2b;
+  border: 1px solid #8b5cf6;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+
+  .titulo_seccion {
+    color: #fff;
+    opacity: 1;
+  }
+
+  .chevronIcon {
+    color: #8b5cf6;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: #8b5cf6;
+    height: 100%;
+    width: 3px;
+    left: -1px;
+    top: 0;
+    pointer-events: none;
+    z-index: 9;
+    border-radius: 10px 0 0 0;
+  }
+}
+
+.dropdown_item1 {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 8px 8px 8px;
+  animation: fadeIn 0.2s ease-out;
+  gap: 4px;
+  background: #1c1c1d;
+  border: 1px solid #8b5cf6;
+  border-top: none;
+  border-radius: 0px 0px 10px 10px;
+
+  .link_item {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 8px 0px 8px 8px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    gap: 10px;
+    text-decoration: none;
+
+    &:hover {
+      background: var(--color-hover, #313132);
+
+      .text {
+        color: #fff;
+        opacity: 1;
+      }
+      .linea_horizontal {
+        background-color: #428df2;
+      }
+    }
+
+    .linea_horizontal {
+      width: 14px;
+      height: 2px;
+      background-color: #8b5cf6;
+    }
+
+    .text {
+      font-size: 0.85rem;
+      color: #fdffff;
+      opacity: 0.7;
+      transition: 0.2s;
+    }
+  }
+}
+
+.clickHead2 {
+  position: relative;
+
+  &::after {
+    content: " ";
+    position: absolute;
+    background-color: #8b5cf6;
+    height: 100%;
+    width: 3px;
+    left: 0px;
+    pointer-events: none;
+    z-index: 9;
+    border-radius: 0 0 0 10px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.cursoHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(145deg, #2a2a2b, #1c1c1d);
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn_logout_curso {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 12px;
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn_logout_curso:hover {
+  background: #6366f1;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}

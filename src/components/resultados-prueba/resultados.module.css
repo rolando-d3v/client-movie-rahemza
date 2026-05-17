@@ -1,0 +1,277 @@
+.quizContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Header */
+.header {
+  margin-bottom: 24px;
+}
+
+.bookTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.bookIcon {
+  width: 24px;
+  height: 24px;
+  color: #e91e63;
+}
+
+.completedIcon {
+  width: 24px;
+  height: 24px;
+  color: #4caf50;
+}
+
+/* Status Section */
+.statusSection {
+  background: #e8e9ea;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.statusGrid {
+  display: grid;
+  gap: 12px;
+}
+
+.statusItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 4px 0;
+}
+
+.statusLabel {
+  font-weight: 600;
+  color: #2c3e50;
+  min-width: 120px;
+}
+
+.statusValue {
+  color: #495057;
+  text-align: right;
+  flex: 1;
+}
+
+/* Questions Container */
+.questionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.questionCard {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.601);
+  overflow: hidden;
+}
+
+.questionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 20px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  gap: 20px;
+}
+
+.questionNumber {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 16px;
+}
+
+.questionStatus {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.statusIncorrect {
+  color: #dc3545;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.statusCorrect {
+  color: #28a745;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+
+
+
+
+/* Question Content */
+.questionContent {
+  padding: 20px;
+}
+
+.questionText {
+  font-size: 1rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  background: #cce7f0;
+  padding: 16px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.option:hover {
+  background-color: #f8f9fa;
+}
+
+
+  .optionLetter {
+    font-weight: 600;
+    color: #495057;
+    min-width: 20px;
+  }
+  
+  .optionText {
+    flex: 1;
+    color: #2c3e50;
+  }
+
+
+
+.correctOption {
+  background-color: #d4edda;
+  border-color: #28a745;
+}
+
+
+
+.correctAnswerBox {
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .incorrectIcon {
+    width: 18px;
+    height: 18px;
+    color: #dc3545;
+    flex-shrink: 0;
+  }
+
+  .correctIcon {
+    width: 18px;
+    height: 18px;
+    color: #28a745;
+    flex-shrink: 0;
+  }
+}
+.selectedIncorrect {
+  background-color: #f8d7da;
+  border-color: #dc3545 !important;
+}
+
+.correctOption {
+  background-color: #d4edda;
+  border-color: #28a745;
+}
+
+.correctAnswerBox strong {
+  color: #856404;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quizContainer {
+    padding: 16px;
+  }
+
+  .questionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .questionStatus {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .statusItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .statusLabel {
+    min-width: auto;
+  }
+
+  .statusValue {
+    text-align: left;
+  }
+
+  .bookTitle {
+    font-size: 20px;
+  }
+
+  .questionText {
+    font-size: 14px;
+  }
+
+  .option {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .quizContainer {
+    padding: 12px;
+  }
+
+  .questionContent {
+    padding: 16px;
+  }
+
+  .questionHeader {
+    padding: 12px 16px;
+  }
+
+  .questionText {
+    padding: 12px;
+    font-size: 13px;
+  }
+}
