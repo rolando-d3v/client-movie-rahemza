@@ -2,18 +2,27 @@ import { createBrowserRouter } from "react-router";
 import PublicRoute from "./guards/PublicRoute";
 import PrivateRoute from "./guards/PrivateRoute";
 
-
-
-
 // Layouts
 import HomeLayout from "../modules/home/HomeLayout";
 import HomePage from "../modules/home/HomePage";
 import DashboardLayout from "../modules/dashboard/layout/layout_dashboard/DashboardLayout";
-// import CursoLayout from "./pages/dashboard/curso/CursoLayout";
 
-// Pages
-// import HomePage from "../pages/dashboard/DashboardLayout";
-import LoginPage from "../modules/auth/pages/LoginPage/LoginPage";
+
+
+import LoginPage from "../modules/auth/pages/login/LoginPage";
+// import LoginPage from "../modules/auth/pages/LoginPage/LoginPage";
+
+
+
+
+
+
+
+
+
+
+
+
 import MisCursosPage from "../modules/dashboard/pages/mis-cursos/DashboardMisCursosPage";
 // import CursoPage from "../modules/dashboard/pages/curso/CursoPage";
 import CursoPage from "../modules/dashboard/pages/curso/CursoLayout";
@@ -21,6 +30,9 @@ import TemaPage from "../modules/dashboard/pages/tema/TemaPage";
 import ResultadosPage from "../modules/dashboard/pages/resultados/ResultadosPage";
 // import DashboardPage from "./pages/dashboard/DashboardPage";
 // import DashboardMisCursosPage from "./pages/dashboard/mis-cursos/DashboardMisCursosPage";
+
+
+
 
 // ─── Placeholder para páginas aún no implementadas ──────────
 const ComingSoon = ({ title }) => (
@@ -38,7 +50,7 @@ const ComingSoon = ({ title }) => (
 // ─── Router ─────────────────────────────────────────────────
 export const router = createBrowserRouter([
   // ════════════════════════════════════════════════════════════
-  //  RUTAS PÚBLICAS (login, recover, register)
+  //  RUTAS PÚBLICAS 
   // ════════════════════════════════════════════════════════════
   {
     element: <PublicRoute />,
@@ -46,8 +58,8 @@ export const router = createBrowserRouter([
       {
         element: <HomeLayout />,
         children: [
-          { path: "/login", element: <LoginPage /> },
           { path: "/", element: <HomePage /> },
+          { path: "/login", element: <LoginPage /> },
           // { path: "/register", element: <RegisterUserPage /> },
           // { path: "/recover", element: <RecoverPage /> },
         ],
@@ -56,15 +68,10 @@ export const router = createBrowserRouter([
   },
 
   // ════════════════════════════════════════════════════════════
-  //  PÁGINA NO AUTORIZADO
-  // ════════════════════════════════════════════════════════════
-  // { path: "/no-autorizado", element: <UnauthorizedPage /> },
-
-  // ════════════════════════════════════════════════════════════
-  //  RUTAS PRIVADAS - Todos los roles autenticados
+  //  RUTAS PRIVADAS - USUARIO AUTH
   // ════════════════════════════════════════════════════════════
   {
-    element: <PrivateRoute />,
+    element: <PrivateRoute allowedRoles={[2]}  />,
     children: [
       {
         element: <DashboardLayout />,
@@ -88,14 +95,14 @@ export const router = createBrowserRouter([
   //  RUTAS PRIVADAS - Solo SUPER_ADMIN
   // ════════════════════════════════════════════════════════════
   {
-    element: <PrivateRoute allowedRoles={[2]} />,
+    element: <PrivateRoute allowedRoles={[1]} />,
     children: [
       {
         element: <DashboardLayout />,
         children: [
           {
-            path: "/super-admin/colegios",
-            element: <ComingSoon title="Gestión de Colegios" />,
+            path: "/admin/peliculas",
+            element: <ComingSoon title="Gestión de Peliculas" />,
           },
           // {
           //   path: "/super-admin/role-opcion",
@@ -105,47 +112,6 @@ export const router = createBrowserRouter([
       },
     ],
   },
-
-  // ════════════════════════════════════════════════════════════
-  //  RUTAS PRIVADAS  ADMIN_COLEGIO
-  // ════════════════════════════════════════════════════════════
-  {
-    element: <PrivateRoute allowedRoles={[2]} />,
-    children: [
-      {
-     element: <DashboardLayout />,
-        children: [
-          {
-            path: "/candidato/dashboard",
-            element: <ComingSoon title="Dashboard" />,
-          },
-          {
-            path: "/candidato/mis-cursos",
-            element: <MisCursosPage />,
-          },
-          {
-            path: "/candidato/curso/:id_curso",
-            element: <CursoPage />,
-          },
-          {
-            path: "/candidato/curso/:id_curso/tema/:id_tema",
-            element: <TemaPage  />,
-          },
-          {
-            path: "/candidato/curso/:id_curso/resultados",
-            element: <ResultadosPage/>,
-          },
-          // {
-          //   path: "/admin-colegio/horario",
-          //   element: <ComingSoon title="Horarios" />,
-          // },
-        ],
-      },
-    ],
-  },
-
-
-
   // ════════════════════════════════════════════════════════════
   //  CATCH ALL → 404
   // ════════════════════════════════════════════════════════════

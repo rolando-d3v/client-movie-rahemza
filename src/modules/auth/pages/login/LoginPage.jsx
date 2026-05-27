@@ -3,7 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import styles from "./registro.module.css";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema } from "../../../schemas/schema_auth";
+import { loginSchema } from "./schema_auth";
 import { useNavigate } from "react-router";
 import { useState, useTransition } from "react";
 

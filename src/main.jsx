@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles/globals.css";
 import { Providers } from "./redux/providers";
-import QueryProvider from "./react-query/QueryProvider";
+import QueryProvider from "./config/QueryProvider.jsx";
 import { AuthInitializer } from "./modules/auth/components/AuthInitializer/AuthInitializer";
 import { Toaster } from "sonner";
 // router  raiz
