@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 // 🔑 pon tu API Key
-const API_KEY = "17502f7d08d06ce8147a188351508546";
+const API_KEY = import.meta.env.VITE_API_KEY || "xxxxxxxxxxxxxxxxxxxxxxxxxxx";
 const BASE_URL = "https://api.themoviedb.org/3";
 
 // const trendingMoviesEnpoint = `${BASE_URL}/trending/movie/day?api_key=`;
@@ -12,7 +12,8 @@ const trendingMoviesEnpoint = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}
 
 const searchMoviesEnpoint = `${BASE_URL}/search/movie?api_key=${API_KEY}`;
 
-
+const searchSeriesEnpoint = `${BASE_URL}/search/tv?api_key=${API_KEY}&query=juego+de+tronos&language=es-ES`;
+// https://api.themoviedb.org/3/search/tv?api_key=TU_API_KEY&query=juego+de+tronos&language=es-ES
 
 
 
@@ -29,10 +30,6 @@ const apiCall = async (endpoint, params) => {
     method: "GET",
     url: endpoint,
     params: params ? params : {},
-    // headers: {
-    //   accept: "application/json",
-    //   Authorization: `Bearer ${API_KEY}`,
-    // },
   };
 
   try {
@@ -59,6 +56,18 @@ export const fetchMovieDetails = (id) => {
 export const fetchMovieCredits = (id) => {
   return apiCall(`${BASE_URL}/movie/${id}/credits?api_key=${API_KEY}&language=es-MX`);
 };
+
+
+
+
+
+
+
+
+
+
+
+
 // export const getMovies = async () => {
 //   try {
 //     const response = await axios.get(

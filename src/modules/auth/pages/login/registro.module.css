@@ -1,9 +1,10 @@
 .layout_login {
-  min-height: calc(100vh - 95px);
+  /* min-height: calc(100vh - 95px); */
+  min-height: 100vh;
   height: 100%;
   display: grid;
   place-items: center;
-  padding: 1rem 2rem;
+  padding: 4rem 2rem 1rem 2rem;
 }
 
 .loginContainer {

@@ -1,0 +1,18 @@
+{
+  "login_page": {
+    "login": "Login",
+    "name": "Name",
+    "password": "Password"
+  },
+  "continue": "Continue",
+
+  "home": {
+    "title": "Home",
+    "welcome": "Welcome to ESP"
+  },
+  "profile": {
+    "title": "Profile",
+    "welcome": "Welcome to your profile in INGLES"
+  }
+
+}

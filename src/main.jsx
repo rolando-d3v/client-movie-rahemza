@@ -9,6 +9,10 @@ import { Toaster } from "sonner";
 import { RouterProvider } from "react-router";
 import { router } from "./config/routes.jsx";
 
+
+
+import "./tools/i18n";
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Providers>

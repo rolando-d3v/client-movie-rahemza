@@ -1,0 +1,16 @@
+{
+  "login_page": {
+    "login": "login",
+    "name": "Name",
+    "password": "Password"
+  },
+  "home_page": {
+    "title": "home",
+    "welcome": "Welcome"
+  },
+  "profile_user_page": {
+    "title": "Profile",
+    "welcome": "Welcome to your profile in INGLES"
+  }
+
+}

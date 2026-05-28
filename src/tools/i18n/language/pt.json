@@ -1,0 +1,15 @@
+{
+  "login_page": {
+    "login": "login",
+    "name": "name",
+    "password": "password"
+  },
+  "home_page": {
+    "title": "home",
+    "welcome": "welcome"
+  },
+  "profile_user_page": {
+    "title": "profile",
+    "welcome": "welcome"
+  }
+}

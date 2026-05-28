@@ -1,0 +1,16 @@
+{
+  "login_page": {
+    "login": "Iniciar Sesión",
+    "name": "Nombre",
+    "password": "Contraseña"
+  },
+
+  "home_page": {
+    "title": "Inicio",
+    "welcome": "Bienvenido a ESP"
+  },
+  "profile_user_page": {
+    "title": "Perfil",
+    "welcome": "Bienvenido a tu perfil en ESP"
+  }
+}

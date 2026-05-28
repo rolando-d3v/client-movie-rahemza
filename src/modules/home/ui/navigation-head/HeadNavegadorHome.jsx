@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router";
-import ToggleTheme from "../toggle_theme/ToggleTheme";
 import styles from "./headNave.module.css";
 import * as Faicons from "react-icons/fa";
 import { useEffect, useState } from "react";
@@ -8,6 +7,12 @@ import {
   fetchTrendingMovies,
 } from "../../../../services/movie";
 
+
+import { useTranslation } from "react-i18next";
+
+
+
+
 export default function HeadNavegadorHome() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -15,6 +20,9 @@ export default function HeadNavegadorHome() {
   const [results, setResults] = useState([]);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
+
+  
+const { t } = useTranslation();
 
   const handleMovieClick = (id) => {
     navigate(`/movie/${id}`);
@@ -117,7 +125,7 @@ export default function HeadNavegadorHome() {
         {/* header escritorio */}
         <article className={`${styles.nav_seccion_desktop}`}>
           {/* links de la navegacion */}
-          {/* <div className={styles.content_links}>
+          <div className={styles.content_links}>
             <Link to={"/dashboard"} className={styles.link_item}>
               Dashboard
             </Link>
@@ -134,7 +142,7 @@ export default function HeadNavegadorHome() {
                 </Link>
               );
             })}
-          </div> */}
+          </div>
           {/* nav lado derecho */}
           <div className={styles.nav_avatar}>
             
@@ -160,12 +168,14 @@ export default function HeadNavegadorHome() {
               )}
             </div>
 
-            {/* <ToggleTheme /> */}
+        
             <Link to="/login" className={styles.inicio_sesion}>
-              <strong>Iniciar Sesión</strong>
+              <strong>{t("login_page.login")} </strong>
             </Link>
           </div>
         </article>
+
+
 
         {/* header movil */}
         <article
@@ -214,7 +224,6 @@ export default function HeadNavegadorHome() {
 
           {/* nav lado derecho */}
           <div className={styles.nav_avatar}>
-            <ToggleTheme />
             <Link
               to="/login"
               className={styles.inicio_sesion}
