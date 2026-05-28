@@ -8,7 +8,7 @@ import { loginSchema } from "./schema_auth";
 import { useNavigate } from "react-router";
 import { useState, useTransition } from "react";
 import images from '../../../../assets/login/login.jpg'
-import { URL_CLIENT } from "../../../../config/constants";
+import { FRONTEND_URL } from "../../../../config/constants";
 
 
 
@@ -93,7 +93,7 @@ export default function LoginPage() {
               onClick={async () => {
                 await authClient.signIn.social({
                   provider: "google",
-                  callbackURL: `${URL_CLIENT}/dashboard`,
+                  callbackURL: `${FRONTEND_URL}/dashboard`,
                 });
               }}
             >
