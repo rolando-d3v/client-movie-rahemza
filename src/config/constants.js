@@ -5,7 +5,7 @@ export const API_URL_MOVIE =
 
 
 
-export const URL_CLIENT = import.meta.env.VITE_URL_FRONTEND || "http://localhost:5173";
+export const URL_CLIENT = import.meta.env.VITE_URL_FRONTEND || "https://www.rahemza.com";
 
 
 
