@@ -55,12 +55,10 @@ export const useAuth = () => {
     [roles]
   );
 
-  // const isSuperAdmin = roles.includes(ROLES.SUPER_ADMIN);
-  // const isAdminColegio = roles.includes(ROLES.ADMIN_COLEGIO);
-  // const isDocente = roles.includes(ROLES.DOCENTE);
-  // const isAlumno = roles.includes(ROLES.ALUMNO);
-  // const isPadre = roles.includes(ROLES.PADRE);
 
+
+
+  
   return {
     // Estado
     user,

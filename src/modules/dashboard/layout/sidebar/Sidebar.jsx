@@ -5,7 +5,7 @@ import { useAuth } from "../../../auth/hooks/useAuth";
 import { DynamicIcon } from "./DynamicIcon";
 import { useCurso } from "../../hooks/useCurso";
 import DropdownTemas from "../dropdown_temas/DropdownTema";
-import icon from "../../../../assets/logo/icon.png";
+import icon from "../../../../assets/logo/walldesk.jpg";
 
 const navItems = [
   {

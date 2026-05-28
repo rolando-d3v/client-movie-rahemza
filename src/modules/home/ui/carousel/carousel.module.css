@@ -2,7 +2,7 @@
   width: 100%;
 
   .div_img {
-    height: 600px;
+    height: 300px;
 
     @media (max-width: 640px) {
       height: 250px;

@@ -12,6 +12,9 @@ export default function Carousel() {
     { id: 2, img: "/images/wallpaper/are.jpg" },
     { id: 3, img: "/images/wallpaper/wall3.jpg" },
     { id: 4, img: "/images/wallpaper/wall5.jpg" },
+    { id: 5, img: "/images/wallpaper/wall5.jpg" },
+    { id: 6, img: "/images/wallpaper/are.jpg" },
+    { id: 7, img: "/images/wallpaper/wall5.jpg" },
   ];
 
   return (
@@ -19,7 +22,7 @@ export default function Carousel() {
       <Swiper
         className={styles.div_img}
         spaceBetween={50}
-        slidesPerView={1}
+        slidesPerView={5}
         navigation={true}
         loop={true}
         pagination={{

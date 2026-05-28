@@ -26,6 +26,15 @@ export const logoutService = () =>
 
 
 
+
+
+
+
+
+
+
+
+
 // ─── Registro ───────────────────────────────────────────────
 export const registerService = (userData) =>
   api.post("/auth/register", userData).then((res) => res.data);

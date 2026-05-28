@@ -1,11 +1,13 @@
 import { Link } from "react-router";
 import { FcGoogle } from "react-icons/fc";
+import { authClient } from "../../../../config/auth-client";
 import styles from "./registro.module.css";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "./schema_auth";
 import { useNavigate } from "react-router";
 import { useState, useTransition } from "react";
+import images from '../../../../assets/login/login.jpg'
 
 export default function LoginPage() {
   const [error, setError] = useState("");
@@ -48,7 +50,10 @@ export default function LoginPage() {
   return (
     <section className={styles.layout_login}>
       <div className={styles.loginContainer}>
-        <div className={styles.leftPanel}>
+        <div
+          className={styles.leftPanel}
+          style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)), url("${images}")` }}
+        >
           <div className={styles.logo}>
             <img
               src="/images/logos/logo_rahemsa.png"
@@ -81,7 +86,12 @@ export default function LoginPage() {
 
             <button
               className={styles.googleButton}
-              onClick={() => console.log("Google login")}
+              onClick={async () => {
+                await authClient.signIn.social({
+                  provider: "google",
+                  callbackURL: "http://localhost:5173/dashboard",
+                });
+              }}
             >
               <FcGoogle className={styles.googleLogo} />
               Google
