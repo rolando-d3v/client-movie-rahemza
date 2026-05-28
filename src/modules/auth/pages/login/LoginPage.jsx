@@ -8,12 +8,16 @@ import { loginSchema } from "./schema_auth";
 import { useNavigate } from "react-router";
 import { useState, useTransition } from "react";
 import images from '../../../../assets/login/login.jpg'
+import { URL_CLIENT } from "../../../../config/constants";
+
+
 
 export default function LoginPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [isPending, startTransition] = useTransition();
   const navigate = useNavigate();
+
 
   const {
     register,
@@ -89,7 +93,7 @@ export default function LoginPage() {
               onClick={async () => {
                 await authClient.signIn.social({
                   provider: "google",
-                  callbackURL: "http://localhost:5173/dashboard",
+                  callbackURL: `${URL_CLIENT}/dashboard`,
                 });
               }}
             >
