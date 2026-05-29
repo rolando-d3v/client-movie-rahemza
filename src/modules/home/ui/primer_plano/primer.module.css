@@ -1,152 +1,362 @@
 /* Contenedor principal */
 .content_primer_plano {
+  position: relative;
   width: 100%;
+  height: 80vh;
+  min-height: 550px;
+  max-height: 800px;
+  background-color: #141414;
+  overflow: hidden;
   display: flex;
-  justify-content: center;
-  padding: 0 2rem;
+  align-items: center;
+}
 
-  .div_content {
-    width: 1300px;
-    position: relative;
-    color: white;
-    height: 640px;
-    font-family: "Arial", sans-serif;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+/* Imagen de fondo / Backdrop */
+.backdrop_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
 
-    @media (width < 758px) {
-      /* height: 700px; */
-      flex-direction: column;
-      align-items: center;
-      justify-content: start;
-      gap: 20px;
-      padding-top: 3.5rem;
-    }
+.backdrop_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  animation: zoomEffect 20s ease-out infinite alternate;
+}
+
+@keyframes zoomEffect {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
   }
 }
 
-/* Contenido */
-.heroContent {
-  top: 15%;
-  left: 3%;
+/* Capas de gradientes para el look Netflix */
+.gradient_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* Degradado horizontal (izquierda a derecha) para legibilidad del texto */
+    linear-gradient(to right, rgba(20, 20, 20, 0.9) 0%, rgba(20, 20, 20, 0.6) 30%, rgba(20, 20, 20, 0) 60%),
+    /* Degradado vertical (abajo a arriba) para fusionar con el fondo general */
+    linear-gradient(to bottom, rgba(20, 20, 20, 0.2) 0%, rgba(20, 20, 20, 0) 50%, rgba(20, 20, 20, 0.8) 80%, rgba(20, 20, 20, 1) 100%);
   z-index: 2;
+}
+
+/* Contenido Principal (Texto y botones) */
+.div_content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding-top: 4rem; /* Compensar la altura del navbar */
+}
+
+.heroContent {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Badge / Tag */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--cyan-400);
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1.15;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  margin: 0;
+  word-wrap: break-word;
+  letter-spacing: -0.5px;
+}
+
+/* Metadata del banner */
+.metadata {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #e5e5e5;
+  margin-top: -0.25rem;
+}
+
+.match {
+  color: #46d369; /* Verde Netflix para coincidencias */
+  font-weight: bold;
+}
+
+.year, .duration {
+  color: #cccccc;
+}
+
+.rating_tag {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 1px 6px;
+  font-size: 0.75rem;
+  border-radius: 3px;
+  line-height: 1;
+}
+
+.hd_tag {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  font-size: 0.7rem;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Sinopsis */
+.descripcion {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #e5e5e5;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   max-width: 500px;
-  .subtitle {
-    font-size: 14px;
-    opacity: 0.8;
-    margin-bottom: 10px;
+  margin: 0;
+}
+
+/* Botones */
+.buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.primaryButton {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.primaryButton:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+  transform: scale(1.03);
+}
+
+.secondaryButton {
+  background-color: rgba(109, 109, 110, 0.7);
+  color: #ffffff;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.secondaryButton:hover {
+  background-color: rgba(109, 109, 110, 0.4);
+  transform: scale(1.03);
+}
+
+/* Controles del Lado Derecho (Mute y Clasificación) */
+.right_controls {
+  position: absolute;
+  right: 0;
+  bottom: 35%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 3;
+}
+
+.mute_button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.mute_button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+  transform: scale(1.05);
+}
+
+.maturity_rating {
+  background-color: rgba(51, 51, 51, 0.6);
+  border-left: 3px solid #dcdcdc;
+  color: #ffffff;
+  padding: 0.5rem 3rem 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  min-width: 100px;
+}
+
+/* Sección de estadísticas Glassmorphic */
+.estadistica {
+  position: absolute;
+  bottom: 2rem;
+  left: 4rem;
+  right: 4rem;
+  z-index: 3;
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  background: rgba(20, 20, 20, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.25rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.div_estadistica {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat_value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--cyan-400);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.25);
+  margin: 0;
+}
+
+.stat_desc {
+  font-size: 0.85rem;
+  color: #a3a3a3;
+  font-weight: 500;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive / Media Queries */
+@media (max-width: 1024px) {
+  .div_content {
+    padding: 0 2.5rem;
+  }
+  .estadistica {
+    left: 2.5rem;
+    right: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content_primer_plano {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 2rem;
+  }
+
+  .div_content {
+    padding: 7rem 1.5rem 12rem 1.5rem;
+    justify-content: flex-start;
   }
 
   .title {
-    font-size: 3.2rem;
-    font-weight: bold;
-    line-height: 1.2;
-    color: var(--text);
+    font-size: 2.5rem;
   }
-  /* Botones */
+
+  .descripcion {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
   .buttons {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-    .primaryButton {
-      background-color: #ffbf00;
-      color: black;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .primaryButton:hover {
-      background-color: #e6a700;
-    }
-    .secondaryButton {
-      background: transparent;
-      color: white;
-      border: 2px solid white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      .secondaryButton:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-      }
-    }
-  }
-}
-
-/* Proyecto destacado */
-.projectCard {
-  /* background-color: red; */
-  width: 60%;
-  height: 100%;
- 
-  display: grid;
-  place-items: center;
-
-  @media (width < 768px) {
     width: 100%;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
-  /* text-align: center; */
-
-  .projectImage {
-    /* width: 100%; */
-    /* height: 400px; */
-    /* position: relative; */
-    /* border-radius: 5px; */
-
-    .image_principal {
-      width: 100%;
-      /* width: 200px; */
-      height: 100%;
-      /* border-radius: 5px; */
-      object-fit: cover;
-      /* object-position: center; */
-
-    }
+  .primaryButton, .secondaryButton {
+    width: 100%;
+    justify-content: center;
   }
-}
 
-.projectCard p {
-  margin-top: 10px;
-  font-size: 14px;
-}
-
-/* Sección de estadísticas */
-.estadistica {
-  position: absolute;
-  bottom: 46px;
-  left: 0%;
-
-  display: flex;
-  gap: 40px;
-  background: rgba(255, 255, 255, 0.9);
-  background: var( --base);
-  padding: 15px;
-  border-radius: 10px;
-  color: black;
-  font-size: 14px;
-  @media (width < 758px) {
-    width: 94%;
-    left: 50%;
-    transform: translate(-50%, 0%);
+  .right_controls {
+    bottom: 12rem;
+    right: 1.5rem;
   }
+
+  .estadistica {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 2rem 1.5rem 0 1.5rem;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
   .div_estadistica {
-    color: var( --base_text);
-    text-align: center;
-    .title {
-      font-size: 1.5rem;
-      /* font-size: 24px; */
-      margin-bottom: 5px;
-    }
-    .descripcion {
-      font-size: 0.8rem;
-      opacity: 0.8;
-    }
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+  }
+  
+  .div_estadistica:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
   }
 }

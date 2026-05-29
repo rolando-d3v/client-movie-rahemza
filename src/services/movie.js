@@ -10,6 +10,9 @@ const BASE_URL = "https://api.themoviedb.org/3";
 // const trendingMoviesEnpoint = `${BASE_URL}/trending/movie/day?api_key=`;
 const trendingMoviesEnpoint = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`;
 
+
+const popularEndpoint = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=es-MX`;
+
 const searchMoviesEnpoint = `${BASE_URL}/search/movie?api_key=${API_KEY}`;
 
 const searchSeriesEnpoint = `${BASE_URL}/search/tv?api_key=${API_KEY}&query=juego+de+tronos&language=es-ES`;
@@ -42,7 +45,7 @@ const apiCall = async (endpoint, params) => {
 };
 
 export const fetchTrendingMovies = () => {
-  return apiCall(trendingMoviesEnpoint);
+  return apiCall(popularEndpoint);
 };
 
 export const fetchSearchMovies = params => {
@@ -51,6 +54,10 @@ export const fetchSearchMovies = params => {
 
 export const fetchMovieDetails = (id) => {
   return apiCall(`${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=es-MX`);
+};
+
+export const fetchMovieVideos = (id) => {
+  return apiCall(`${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}&language=es-ES`);
 };
 
 export const fetchMovieCredits = (id) => {
