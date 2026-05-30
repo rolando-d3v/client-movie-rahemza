@@ -37,15 +37,6 @@ export default function LoginPage() {
     setSuccess("");
 
     startTransition(async () => {
-      // Aquí puedes agregar tu lógica de login con axios o fetch
-      // Ejemplo:
-      // try {
-      //   const res = await axios.post(`${API_RAHEMSA}/auth/login`, values);
-      //   setSuccess("Logged in successfully");
-      //   navigate("/");
-      // } catch (err) {
-      //   setError("Error en las credenciales");
-      // }
       console.log("Login submitted:", values);
       setSuccess("Login form submitted");
     });
@@ -93,7 +84,8 @@ export default function LoginPage() {
               onClick={async () => {
                 await authClient.signIn.social({
                   provider: "google",
-                  callbackURL: `${FRONTEND_URL}/dashboard`,
+                  callbackURL: `${FRONTEND_URL}/user-home`,
+                  // callbackURL: `${FRONTEND_URL}/dashboard`,
                 });
               }}
             >

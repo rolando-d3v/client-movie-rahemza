@@ -17,5 +17,5 @@ export const FRONTEND_URL = import.meta.env.VITE_FRONTEND_URL || "http:localhost
 export const DEFAULT_PAGE_SIZE = 10;
 
 export const DEFAULT_ROUTES = {
-  [1]: "/dashboard",
+  [1]: "/user-home",
 };

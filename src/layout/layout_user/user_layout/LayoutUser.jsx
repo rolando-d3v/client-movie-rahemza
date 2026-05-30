@@ -1,6 +1,7 @@
 import styles from "./layout_dashboard.module.css";
-import HeadNavegadorHome from "../navigation-head/HeadNavegadorHome";
+import HeadNavegadorHome from "../navigation-web/HeadNavegadorHome";
 import { Outlet } from "react-router";
+import FooterWeb from "../footer_web/FooterWeb";
 
 export default function LayoutUser() {
   return (
@@ -10,6 +11,7 @@ export default function LayoutUser() {
       </div> */}
       <HeadNavegadorHome />
       <Outlet />
+      <FooterWeb />
     </main>
   );
 }
