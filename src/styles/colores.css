@@ -1,140 +1,172 @@
 /*
  * ============================================================
- *  LMS DESIGN SYSTEM — DARK MODE TOKENS
- *  Inspiración: Netflix (estética oscura profunda)
- *  Acento: Cian (#00FFFF)
+ *  DESIGN SYSTEM — DARK EMERALD THEME
+ *  Inspiración: Paleta Moderna Verde Esmeralda / Deep Dark
+ *  Acento Primario: #05CA79
  * ============================================================
  */
 
 :root {
-  /* ── Escala Cian (primaria) ── */
-  --cyan-50: #edfffd;
-  --cyan-100: #c0fffa;
-  --cyan-200: #81fff6;
-  --cyan-300: #3afff9;
-  --cyan-400: #00ffff;
-  --cyan-500: #00dee2;
-  --cyan-600: #00b0b7;
-  --cyan-700: #008a91;
-  --cyan-800: #006b72;
-  --cyan-900: #04585d;
-  --cyan-950: #00343a;
+  /* ── 0. PALETA BASE JS (Objeto Color) ── */
+  --primary-color: #05CA79;
+  --secondary-color: #05CA79;
+  --tertiary-color: #05CA79;
+  --cuaternary-color: #05CA79;
+  --azul-oscuro: #0a0a0d;
+  --verde: #2d6a4f;
 
+  --background: #0a0a0d;
+  --surface: #000000;
+  --card: #1a3a2d;
 
-  /* ── Escala Púrpura ── */
-  --purple-50: #f1effe;
-  --purple-100: #e0d9fd;
-  --purple-200: #cdc1ff;
-  --purple-300: #b3a3fb;
-  --purple-400: #a294f9;
-  --purple-500: #7b61ff;
-  --purple-600: #6e54b5;
-  --purple-700: #4f3b8c;
-  --purple-800: #32245e;
-  --purple-900: #1e153a;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted: #aaaaaa;
 
-  /* ── Escala Naranja ── */
-  --orange-50: #fff3e8;
-  --orange-100: #fdd3b2;
-  --orange-300: #f9a76a;
-  --orange-500: #f47c3c;
-  --orange-700: #c5581d;
+  --accent-purple: #bb86fc;
+  --accent-red: #ff5252;
+  --accent-blue: #0095f6;
+
+  --border: #555555;
+  --overlay: rgba(0, 0, 0, 0.5);
+  --overlay-dark: rgba(0, 0, 0, 0.9);
+  --transparent: transparent;
+
+  /* ── Escala Esmeralda / Primaria (#05CA79) ── */
+  --emerald-50: #e6fcf2;
+  --emerald-100: #c3f7de;
+  --emerald-200: #8ef0c1;
+  --emerald-300: #4fe6a1;
+  --emerald-400: #1dd98c;
+  --emerald-500: #05ca79; /* Color principal */
+  --emerald-600: #04a864;
+  --emerald-700: #2d6a4f; /* Verde profundo */
+  --emerald-800: #1a3a2d; /* Verde card */
+  --emerald-900: #0f261d;
+  --emerald-950: #071510;
+
+  /* ── Compatibilidad con selectores heredados (--cyan-*) ── */
+  --cyan-50: var(--emerald-50);
+  --cyan-100: var(--emerald-100);
+  --cyan-200: var(--emerald-200);
+  --cyan-300: var(--emerald-300);
+  --cyan-400: var(--emerald-400);
+  --cyan-500: var(--emerald-500);
+  --cyan-600: var(--emerald-600);
+  --cyan-700: var(--emerald-700);
+  --cyan-800: var(--emerald-800);
+  --cyan-900: var(--emerald-900);
+  --cyan-950: var(--emerald-950);
+
+  /* ── Escala Púrpura (Acentos) ── */
+  --purple-50: #f7f3ff;
+  --purple-100: #eee5ff;
+  --purple-200: #decbff;
+  --purple-300: #c5a3ff;
+  --purple-400: #bb86fc; /* Accent purple */
+  --purple-500: #9955e8;
+  --purple-600: #7b32c9;
+  --purple-700: #5c1fa3;
+  --purple-800: #3c146e;
+  --purple-900: #1e0938;
+
+  /* ── Escala Naranja / Dorada ── */
+  --orange-50: #fff8eb;
+  --orange-100: #feedc7;
+  --orange-300: #fcd34d;
+  --orange-500: #f59e0b;
+  --orange-700: #b45309;
 
   /* ============================================================
    *  1. FONDOS Y SUPERFICIES
-   *  Negro base #141414, capas subiendo levemente
-   *  cyan-950 para fondos tintados, cyan-900 para sidebar activo
    * ============================================================ */
 
-  --color-body-app: var(--cyan-500);
-  --color-border-app: #333333;
-  --color-fondo-app: #141414;
-  --color-fondo-sidebar: #000000;
-  --color-fondo-sidebar-activo: var(--cyan-950);
+  --color-body-app: var(--background);
+  --color-border-app: var(--border);
+  --color-fondo-app: var(--background);
+  --color-fondo-sidebar: var(--surface);
+  --color-fondo-sidebar-activo: var(--card);
 
-  --color-fondo-opcion-hover: #2f2f2f;
-  --color-texto-opcion-hover: #ffffff;
+  --color-fondo-opcion-hover: #162620;
+  --color-texto-opcion-hover: var(--text-primary);
 
-  --color-fondo-card: #1f1f1f;
+  --color-fondo-card: var(--card);
 
-  --color-fondo-elevado: #2f2f2f;
-  --color-fondo-input: #333333;
-  --color-fondo-overlay: rgba(0, 0, 0, 0.85);
-  --color-fondo-activo: rgba(0, 222, 226, 0.12);
-  --color-fondo-hover: rgba(0, 222, 226, 0.08);
-  --color-fondo-skeleton: #2f2f2f;
+  --color-fondo-elevado: #1a3a2d;
+  --color-fondo-input: #121915;
+  --color-fondo-overlay: var(--overlay-dark);
+  --color-fondo-activo: rgba(5, 202, 121, 0.15);
+  --color-fondo-hover: rgba(5, 202, 121, 0.08);
+  --color-fondo-skeleton: #162b21;
 
   /* ============================================================
    *  2. TEXTOS Y TIPOGRAFÍA
-   *  Headings blancos, body claro, links en cyan-300
    * ============================================================ */
 
-  --color-texto-heading: #ffffff;
-  --color-texto-body: #e5e5e5;
-  --color-texto-secundario: #a3a3a3;
-  --color-texto-placeholder: #666666;
-  --color-texto-sidebar: #e5e5e5;
-  --color-texto-sidebar-muted: #666666;
-  --color-texto-disabled: #404040;
-  --color-texto-link: var(--cyan-300);
-  --color-texto-link-hover: var(--cyan-200);
+  --color-texto-heading: var(--text-primary);
+  --color-texto-body: var(--text-primary);
+  --color-texto-secundario: var(--text-secondary);
+  --color-texto-placeholder: var(--text-muted);
+  --color-texto-sidebar: var(--text-secondary);
+  --color-texto-sidebar-muted: var(--text-muted);
+  --color-texto-disabled: #555555;
+  --color-texto-link: var(--primary-color);
+  --color-texto-link-hover: var(--emerald-300);
 
   /* ============================================================
-   *  3. COLOR PRIMARIO — Cian
-   *  500 para botones/CTAs (equilibrado, no agresivo)
-   *  400 para hover (brillo "glow")
-   *  600 para pressed/active
-   *  300 para texto sobre fondos oscuros
+   *  3. COLOR PRIMARIO — Esmeralda (#05CA79)
    * ============================================================ */
 
-  --color-primario: var(--cyan-500);
-  --color-primario-hover: var(--cyan-400);
-  --color-primario-activo: var(--cyan-600);
-  --color-primario-suave: rgba(0, 222, 226, 0.2);
-  --color-primario-muysuave: rgba(0, 222, 226, 0.1);
-  --color-primario-texto: var(--cyan-300);
+  --color-primario: var(--primary-color);
+  --color-primario-hover: var(--emerald-400);
+  --color-primario-activo: var(--emerald-600);
+  --color-primario-suave: rgba(5, 202, 121, 0.2);
+  --color-primario-muysuave: rgba(5, 202, 121, 0.1);
+  --color-primario-texto: var(--primary-color);
 
   /* ============================================================
-   *  4. PROGRESO (usa cyan-700 para diferenciarse del primario)
+   *  4. PROGRESO Y ACENTOS
    * ============================================================ */
 
-  --color-progreso: var(--cyan-700);
-  --color-progreso-hover: var(--cyan-600);
-  --color-progreso-suave: rgba(0, 138, 145, 0.15);
+  --color-progreso: var(--verde);
+  --color-progreso-hover: var(--primary-color);
+  --color-progreso-suave: rgba(45, 106, 79, 0.25);
+
+  --color-acento-purple: var(--accent-purple);
+  --color-acento-red: var(--accent-red);
+  --color-acento-blue: var(--accent-blue);
 
   /* ============================================================
-   *  5. GAMIFICACIÓN (Naranja)
+   *  5. GAMIFICACIÓN
    * ============================================================ */
 
-  --color-gamificacion: #f9a76a;
-  --color-gamificacion-suave: rgba(244, 124, 60, 0.15);
+  --color-gamificacion: #f59e0b;
+  --color-gamificacion-suave: rgba(245, 158, 11, 0.15);
 
   /* ============================================================
    *  6. BORDES Y SOMBRAS
-   *  Focus: cyan-400 (el más brillante, máxima visibilidad)
-   *  Activo: cyan-300
    * ============================================================ */
 
-  --color-borde: #404040;
-  --color-borde-suave: #292929;
-  --color-borde-focus: var(--cyan-400);
-  --color-borde-activo: var(--cyan-300);
-  --color-borde-error: #f87171;
+  --color-borde: var(--border);
+  --color-borde-suave: rgba(255, 255, 255, 0.1);
+  --color-borde-focus: var(--primary-color);
+  --color-borde-activo: var(--emerald-400);
+  --color-borde-error: var(--accent-red);
 
-  --sombra-card: 0 2px 8px rgba(0, 0, 0, 0.6);
-  --sombra-modal: 0 8px 40px rgba(0, 0, 0, 0.8);
-  --sombra-dropdown: 0 4px 20px rgba(0, 0, 0, 0.7);
-  --focus-ring: 0 0 0 3px rgba(0, 255, 255, 0.35);
+  --sombra-card: 0 4px 16px rgba(0, 0, 0, 0.6);
+  --sombra-modal: 0 8px 40px rgba(0, 0, 0, 0.9);
+  --sombra-dropdown: 0 4px 20px rgba(0, 0, 0, 0.8);
+  --focus-ring: 0 0 0 3px rgba(5, 202, 121, 0.35);
 
   /* ============================================================
    *  7. ESTADOS SEMÁNTICOS
    * ============================================================ */
 
   /* Éxito */
-  --color-exito: #34d399;
-  --color-exito-fondo: rgba(26, 173, 107, 0.15);
-  --color-exito-borde: rgba(52, 211, 153, 0.3);
-  --color-exito-texto: #6ee7b7;
+  --color-exito: var(--primary-color);
+  --color-exito-fondo: rgba(5, 202, 121, 0.15);
+  --color-exito-borde: rgba(5, 202, 121, 0.3);
+  --color-exito-texto: var(--emerald-300);
 
   /* Advertencia */
   --color-advertencia: #fbbf24;
@@ -143,53 +175,50 @@
   --color-advertencia-texto: #fde68a;
 
   /* Error */
-  --color-error: #f87171;
-  --color-error-fondo: rgba(232, 64, 64, 0.15);
-  --color-error-borde: rgba(248, 113, 113, 0.3);
-  --color-error-texto: #fca5a5;
+  --color-error: var(--accent-red);
+  --color-error-fondo: rgba(255, 82, 82, 0.15);
+  --color-error-borde: rgba(255, 82, 82, 0.3);
+  --color-error-texto: #ff8a80;
 
-  /* Info — refuerza el cian primario (usa 500/300) */
-  --color-info: var(--cyan-500);
-  --color-info-fondo: rgba(0, 222, 226, 0.12);
-  --color-info-borde: rgba(0, 176, 183, 0.3);
-  --color-info-texto: var(--cyan-300);
+  /* Info */
+  --color-info: var(--accent-blue);
+  --color-info-fondo: rgba(0, 149, 246, 0.15);
+  --color-info-borde: rgba(0, 149, 246, 0.3);
+  --color-info-texto: #80d6ff;
 
   /* ============================================================
    *  8. INDICADORES FUNCIONALES
-   *  Badge/progreso en cyan-500, estrella dorada independiente
    * ============================================================ */
 
-  --color-online: #34d399;
+  --color-online: var(--primary-color);
   --color-ausente: #fbbf24;
-  --color-offline: #666666;
-  --color-badge: var(--cyan-500);
-  --color-badge-texto: #ffffff;
+  --color-offline: var(--text-muted);
+  --color-badge: var(--primary-color);
+  --color-badge-texto: #000000;
 
-  --color-barra-progreso: var(--cyan-500);
-  --color-barra-progreso-fondo: rgba(0, 222, 226, 0.12);
+  --color-barra-progreso: var(--primary-color);
+  --color-barra-progreso-fondo: rgba(5, 202, 121, 0.15);
 
   --color-estrella: #fbbf24;
 
-  --color-tag-fondo: var(--cyan-950);
-  --color-tag-texto: var(--cyan-100);
-  --color-tag-borde: rgba(0, 222, 226, 0.15);
+  --color-tag-fondo: var(--card);
+  --color-tag-texto: var(--emerald-100);
+  --color-tag-borde: rgba(5, 202, 121, 0.25);
 
   /* ============================================================
    *  9. INTERACCIÓN
-   *  Selección tintada con cyan, overlays neutros
    * ============================================================ */
 
   --color-hover-overlay: rgba(255, 255, 255, 0.06);
   --color-pressed-overlay: rgba(255, 255, 255, 0.12);
-  --color-seleccion: rgba(0, 222, 226, 0.25);
+  --color-seleccion: rgba(5, 202, 121, 0.25);
 
-  --color-disabled-fondo: #1a1a1a;
-  --color-disabled-texto: #404040;
-  --color-disabled-borde: #2a2a2a;
+  --color-disabled-fondo: #151816;
+  --color-disabled-texto: #555555;
+  --color-disabled-borde: #333333;
 
   /* ============================================================
    *  10. GAMIFICACIÓN — RANGOS
-   *  Diamante usa cyan-300 (el tono más premium de la escala)
    * ============================================================ */
 
   --color-rango-bronce: #e09d58;
@@ -201,9 +230,9 @@
   --color-rango-oro: #fbbf24;
   --color-rango-oro-fondo: rgba(245, 158, 11, 0.15);
 
-  --color-rango-diamante: var(--cyan-300);
-  --color-rango-diamante-fondo: rgba(0, 222, 226, 0.12);
+  --color-rango-diamante: var(--primary-color);
+  --color-rango-diamante-fondo: rgba(5, 202, 121, 0.15);
 
-  --color-xp: var(--cyan-700);
-  --color-xp-fondo: rgba(0, 138, 145, 0.15);
+  --color-xp: var(--verde);
+  --color-xp-fondo: rgba(45, 106, 79, 0.2);
 }
