@@ -1,0 +1,74 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: linear-gradient(180deg, rgba(10, 10, 13, 0.9) 0%, rgba(10, 10, 13, 0) 100%);
+  transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+  background-color: rgba(10, 10, 13, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--sombra-dropdown);
+  border-bottom: 1px solid var(--color-borde-suave);
+}
+
+.container {
+  max-width: 1440px;
+  height: 68px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+    height: 60px;
+  }
+}
+
+/* ─── Desktop Section ───────────────────────────── */
+.desktopSection {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .desktopSection {
+    display: none;
+  }
+}
+
+/* ─── Mobile Toggle Button ──────────────────────── */
+.mobileToggleBtn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.mobileToggleBtn:hover {
+  background: var(--color-fondo-hover);
+  color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+  .mobileToggleBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

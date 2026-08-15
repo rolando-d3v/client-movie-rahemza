@@ -1,23 +1,22 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import { authClient } from "../../../../config/auth-client";
 import styles from "./registro.module.css";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "./schema_auth";
-import { useNavigate } from "react-router";
-import { useState, useTransition } from "react";
-import images from '../../../../assets/login/login.jpg'
+import { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
+import images from '../../../../assets/login/login.jpg';
 import { FRONTEND_URL } from "../../../../config/constants";
-
-
 
 export default function LoginPage() {
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-  const [isPending, startTransition] = useTransition();
+  const [isEmailLoading, setIsEmailLoading] = useState(false);
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const navigate = useNavigate();
-
+  const queryClient = useQueryClient();
 
   const {
     register,
@@ -31,15 +30,52 @@ export default function LoginPage() {
     },
   });
 
-  const onSubmit = async (values) => {
-    console.log(values);
-    setError("");
-    setSuccess("");
+  const handleGoogleLogin = async () => {
+    try {
+      setIsGoogleLoading(true);
+      setError("");
+      await authClient.signIn.social({
+        provider: "google",
+        callbackURL: `${FRONTEND_URL}/home`,
+      });
+    } catch (err) {
+      console.error("Error Google Login:", err);
+      toast.error("Error al conectar con Google");
+      setIsGoogleLoading(false);
+    }
+  };
 
-    startTransition(async () => {
-      console.log("Login submitted:", values);
-      setSuccess("Login form submitted");
-    });
+  const onSubmit = async (values) => {
+    setError("");
+    setIsEmailLoading(true);
+
+    try {
+      const response = await authClient.signIn.email({
+        email: values.email,
+        password: values.password,
+      });
+
+      if (response?.error) {
+        const errorMsg = response.error.message || "Correo o contraseña incorrectos";
+        setError(errorMsg);
+        toast.error(errorMsg);
+        setIsEmailLoading(false);
+        return;
+      }
+
+      // Revalidar sesión en background
+      await queryClient.invalidateQueries({ queryKey: ["auth", "verify"] });
+
+      toast.success("¡Bienvenido!");
+      navigate("/home", { replace: true });
+    } catch (err) {
+      console.error("Error en login:", err);
+      const errorMsg = err?.message || "Ocurrió un error al iniciar sesión";
+      setError(errorMsg);
+      toast.error(errorMsg);
+    } finally {
+      setIsEmailLoading(false);
+    }
   };
 
   return (
@@ -81,16 +117,12 @@ export default function LoginPage() {
 
             <button
               className={styles.googleButton}
-              onClick={async () => {
-                await authClient.signIn.social({
-                  provider: "google",
-                  callbackURL: `${FRONTEND_URL}/user-home`,
-                  // callbackURL: `${FRONTEND_URL}/dashboard`,
-                });
-              }}
+              onClick={handleGoogleLogin}
+              disabled={isGoogleLoading || isEmailLoading}
+              type="button"
             >
               <FcGoogle className={styles.googleLogo} />
-              Google
+              {isGoogleLoading ? "Conectando..." : "Google"}
             </button>
 
             <div className={styles.divider}>
@@ -113,6 +145,7 @@ export default function LoginPage() {
                     id="email"
                     {...register("email")}
                     className={styles.input}
+                    placeholder="ejemplo@correo.com"
                   />
                 </div>
                 <p>{errors.email?.message}</p>
@@ -128,24 +161,26 @@ export default function LoginPage() {
                     id="password"
                     {...register("password")}
                     className={styles.input}
+                    placeholder="••••••••"
                   />
                 </div>
                 <p>{errors.password?.message}</p>
               </div>
 
               <div>
-                {error && <p style={{ background: '#fecaca', color: '#dc2626', padding: '8px', borderRadius: '4px' }}>{error}</p>}
-                {success && (
-                  <p style={{ background: '#bbf7d0', color: '#16a34a', padding: '8px', borderRadius: '4px' }}>{success}</p>
+                {error && (
+                  <p style={{ background: '#fecaca', color: '#dc2626', padding: '8px', borderRadius: '4px', fontSize: '0.875rem' }}>
+                    {error}
+                  </p>
                 )}
               </div>
 
               <button
-                disabled={isPending}
+                disabled={isEmailLoading || isGoogleLoading}
                 className={styles.loginButton}
                 type="submit"
               >
-                Iniciar sesion
+                {isEmailLoading ? "Iniciando sesión..." : "Iniciar sesión"}
               </button>
             </form>
 

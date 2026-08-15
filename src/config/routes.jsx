@@ -44,12 +44,12 @@ export const router = createBrowserRouter([
   //  RUTAS PRIVADAS - USUARIO AUTH
   // ════════════════════════════════════════════════════════════
   {
-    element: <PrivateRoute allowedRoles={[2]} />,
+    element: <PrivateRoute allowedRoles={[1, 2]} />,
     children: [
       {
         element: <LayoutUser />,
         children: [
-          { path: "/user-home", element: <LayoutUserPage /> },
+          { path: "/home", element: <LayoutUserPage /> },
           { path: "/perfil", element: <ComingSoon title="Mi Perfil" /> },
           { path: "/comunicaciones/mensajes", element: <ComingSoon title="Mensajes" /> },
           { path: "/comunicaciones/bandeja", element: <ComingSoon title="Bandeja" /> },

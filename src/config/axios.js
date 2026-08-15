@@ -11,8 +11,11 @@ const api = axios.create({
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
-      // Redirigir al login solo si no estamos ya en /login
+    // Si la petición da 401 y no es la verificación inicial pasiva de sesión
+    if (
+      error.response?.status === 401 &&
+      !error.config?.url?.includes("/auth/verify-auth")
+    ) {
       if (!window.location.pathname.startsWith("/login")) {
         window.location.href = "/login";
       }

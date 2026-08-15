@@ -4,24 +4,19 @@ import { useAuth } from "../../modules/auth/hooks/useAuth";
 
 const PrivateRoute = ({ allowedRoles }) => {
   const { isAuthenticated, role_opcion } = useAuth();
-  // const { isAuthenticated, roles } = useAuth();
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
-  console.log(allowedRoles);
-  console.log(role_opcion);
-  console.log(role_opcion[0]?.role_id);
 
-  const roleId = role_opcion.map((role) => role.role_id);
-
-  console.log(roleId);
-  
+  const roleIds = Array.isArray(role_opcion)
+    ? role_opcion.map((role) => role.role_id)
+    : [];
 
   if (allowedRoles && allowedRoles.length > 0) {
-    const hasPermission = allowedRoles.some((role) => roleId.includes(role));
+    const hasPermission = allowedRoles.some((role) => roleIds.includes(role));
     if (!hasPermission) {
-      return <Navigate to="/no-autorizado" replace />;
+      return <Navigate to="/" replace />;
     }
   }
 

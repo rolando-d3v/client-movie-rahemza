@@ -6,7 +6,7 @@ const PublicRoute = () => {
   const { isAuthenticated } = useAuth();
 
   if (isAuthenticated) {
-    return <Navigate to="/user-home" replace />;
+    return <Navigate to="/home" replace />;
   }
 
   return <Outlet />;

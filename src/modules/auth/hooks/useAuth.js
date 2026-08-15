@@ -1,13 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useCallback } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useCallback, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import {
   logout as logoutAction,
   setActiveRole,
 } from "../../../redux/slices/authSlice";
-
-import { logoutService } from "../services/authService";
-// import { ROLES } from "../../../config/constants";
+import { authClient } from "../../../config/auth-client";
 
 /**
  * Hook centralizado para acceder al estado de autenticación
@@ -16,23 +14,24 @@ import { logoutService } from "../services/authService";
 export const useAuth = () => {
   const dispatch = useDispatch();
   const queryClient = useQueryClient();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const { user, roles, role_opcion, activeRole, colegio, isAuthenticated, error } =
     useSelector((state) => state.authSlice);
 
-  // ─── Logout con mutation (limpia cookie en backend) ─────
-  const logoutMutation = useMutation({
-    mutationFn: logoutService,
-    onSettled: () => {
-      // Siempre limpiar estado local, incluso si falla el backend
+  // ─── Logout con better-auth ─────────────────────────────
+  const handleLogout = useCallback(async () => {
+    try {
+      setIsLoggingOut(true);
+      await authClient.signOut();
+    } catch (err) {
+      console.error("Error en signOut:", err);
+    } finally {
       dispatch(logoutAction());
       queryClient.removeQueries({ queryKey: ["auth"] });
-    },
-  });
-
-  const handleLogout = useCallback(() => {
-    logoutMutation.mutate();
-  }, [logoutMutation]);
+      setIsLoggingOut(false);
+    }
+  }, [dispatch, queryClient]);
 
   // ─── Cambiar rol activo ─────────────────────────────────
   const handleSetActiveRole = useCallback(
@@ -42,23 +41,17 @@ export const useAuth = () => {
     [dispatch]
   );
 
-
-
   // ─── Helpers de roles ───────────────────────────────────
   const hasRole = useCallback(
-    (role) => roles.includes(role),
+    (role) => (roles || []).includes(role),
     [roles]
   );
 
   const hasAnyRole = useCallback(
-    (checkRoles) => checkRoles.some((role) => roles.includes(role)),
+    (checkRoles) => checkRoles.some((role) => (roles || []).includes(role)),
     [roles]
   );
 
-
-
-
-  
   return {
     // Estado
     user,
@@ -67,21 +60,15 @@ export const useAuth = () => {
     activeRole,
     colegio,
     isAuthenticated,
-    isLoggingOut: logoutMutation.isPending,
+    isLoggingOut,
     error,
 
     // Acciones
     handleLogout,
     handleSetActiveRole,
- 
 
     // Helpers
     hasRole,
     hasAnyRole,
-    // isSuperAdmin,
-    // isAdminColegio,
-    // isDocente,
-    // isAlumno,
-    // isPadre,
   };
 };
