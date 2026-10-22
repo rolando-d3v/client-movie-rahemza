@@ -34,10 +34,15 @@ export default function LoginPage() {
     try {
       setIsGoogleLoading(true);
       setError("");
-      await authClient.signIn.social({
+      // signIn.social no lanza ante errores del servidor: los devuelve en `error`.
+      const { error: googleError } = await authClient.signIn.social({
         provider: "google",
         callbackURL: `${FRONTEND_URL}/home`,
       });
+      if (googleError) {
+        toast.error(googleError.message || "Error al conectar con Google");
+        setIsGoogleLoading(false);
+      }
     } catch (err) {
       console.error("Error Google Login:", err);
       toast.error("Error al conectar con Google");
