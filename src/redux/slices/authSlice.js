@@ -2,16 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // ─── Estado inicial ─────────────────────────────────────────
 const initialState = {
-  // usuario autenticado
+  // usuario autenticado { id, name, email, role, ... }
   user: null,
-  // { id, email, nombre, apellido, ... }
 
-  // roles del usuario  ["super_admin", "admin_colegio"]
-  roles: [],
-  role_opcion: [],
-
-  // rol activo seleccionado (cuando tiene múltiples)
-  activeRole: null,
+  // rol de plataforma: "admin" | "moderator" | null (null = usuario normal)
+  role: null,
 
   // estado de autenticación
   isAuthenticated: false,
@@ -28,11 +23,9 @@ const authSlice = createSlice({
   reducers: {
     // Establecer credenciales (login o verify exitoso)
     setCredentials: (state, action) => {
-      const { user, roles, role_opcion } = action.payload;      
+      const { user } = action.payload;
       state.user = user;
-      state.roles = roles || [];
-      state.role_opcion = role_opcion || [];
-      state.activeRole = role_opcion?.[0] || null;
+      state.role = user?.role ?? null;
       state.isAuthenticated = true;
       state.error = null;
     },
@@ -40,16 +33,9 @@ const authSlice = createSlice({
     // Cerrar sesión
     logout: (state) => {
       state.user = null;
-      state.roles = [];
-      state.role_opcion = [];
-      state.activeRole = null;
+      state.role = null;
       state.isAuthenticated = false;
       state.error = null;
-    },
-
-    // Cambiar rol activo (para usuarios con múltiples roles)
-    setActiveRole: (state, action) => {
-      state.activeRole = action.payload;
     },
 
     // Guardar error de autenticación
@@ -67,7 +53,6 @@ const authSlice = createSlice({
 export const {
   setCredentials,
   logout,
-  setActiveRole,
   setAuthError,
   clearError,
 } = authSlice.actions;

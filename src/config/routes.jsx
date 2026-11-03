@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
   //  RUTAS PRIVADAS - USUARIO AUTH
   // ════════════════════════════════════════════════════════════
   {
-    element: <PrivateRoute allowedRoles={[1, 2]} />,
+    element: <PrivateRoute />,
     children: [
       {
         element: <LayoutUser />,
@@ -59,19 +59,15 @@ export const router = createBrowserRouter([
   },
 
   // ════════════════════════════════════════════════════════════
-  //  RUTAS PRIVADAS - Solo SUPER_ADMIN
+  //  RUTAS PRIVADAS - Solo administradores (role = "admin")
   // ════════════════════════════════════════════════════════════
   {
-    element: <PrivateRoute allowedRoles={[1]} />,
+    element: <PrivateRoute allowedRoles={["admin"]} />,
     children: [
       {
         element: <LayoutUser />,
         children: [
           { path: "/admin/peliculas", element: <ComingSoon title="Gestión de Peliculas" /> },
-          // {
-          //   path: "/super-admin/role-opcion",
-          //   element: <RoleOpcionPage />,
-          // },
         ],
       },
     ],

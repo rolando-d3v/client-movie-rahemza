@@ -1,23 +1,20 @@
 import { Navigate, Outlet } from "react-router";
 import { useAuth } from "../../modules/auth/hooks/useAuth";
 
-
+/**
+ * Exige sesión. Con `allowedRoles` (p. ej. ["admin"] o ["admin", "moderator"]) exige además
+ * ese rol de plataforma; sin `allowedRoles` basta con estar autenticado (los usuarios normales
+ * no tienen rol: role = null).
+ */
 const PrivateRoute = ({ allowedRoles }) => {
-  const { isAuthenticated, role_opcion } = useAuth();
+  const { isAuthenticated, hasAnyRole } = useAuth();
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
 
-  const roleIds = Array.isArray(role_opcion)
-    ? role_opcion.map((role) => role.role_id)
-    : [];
-
-  if (allowedRoles && allowedRoles.length > 0) {
-    const hasPermission = allowedRoles.some((role) => roleIds.includes(role));
-    if (!hasPermission) {
-      return <Navigate to="/" replace />;
-    }
+  if (allowedRoles && allowedRoles.length > 0 && !hasAnyRole(allowedRoles)) {
+    return <Navigate to="/" replace />;
   }
 
   return <Outlet />;
